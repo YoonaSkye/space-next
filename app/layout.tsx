@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import SiteHeader from '@/components/site-header'
+import SiteFooter from '@/components/site-footer'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -15,8 +17,14 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body className={inter.className} suppressHydrationWarning>
+        <section className="flex flex-col min-h-screen mx-auto max-w-5xl pt-12 pb-8 px-8">
+          <SiteHeader />
+          <main>{children}</main>
+          <SiteFooter />
+        </section>
+      </body>
     </html>
   )
 }
