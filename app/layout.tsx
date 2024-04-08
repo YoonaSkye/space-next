@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import SiteHeader from '@/components/site-header'
 import SiteFooter from '@/components/site-footer'
+import NextThemeProvider from '@/components/next-theme-provider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,11 +20,13 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className} suppressHydrationWarning>
-        <section className="flex flex-col min-h-screen mx-auto max-w-5xl pt-12 pb-8 px-8">
-          <SiteHeader />
-          <main>{children}</main>
-          <SiteFooter />
-        </section>
+        <NextThemeProvider>
+          <section className="flex flex-col min-h-screen mx-auto max-w-5xl pt-12 pb-8 px-8">
+            <SiteHeader />
+            <main>{children}</main>
+            <SiteFooter />
+          </section>
+        </NextThemeProvider>
       </body>
     </html>
   )

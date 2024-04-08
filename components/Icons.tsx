@@ -1,7 +1,8 @@
-import { Moon, SunMedium, Menu } from 'lucide-react'
+import { Moon, SunMedium, Menu, Monitor } from 'lucide-react'
 
 export const Icons = {
   moon: Moon,
   sun: SunMedium,
-  menu: Menu
+  menu: Menu,
+  system: Monitor
 }

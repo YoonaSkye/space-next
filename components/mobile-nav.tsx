@@ -15,7 +15,11 @@ export default function MobileNav() {
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
-        <Button variant="outline" size="icon" className="w-10 px-0 sm:hidden">
+        <Button
+          variant="outline"
+          size="icon"
+          className="w-10 px-0 ml-2 sm:hidden"
+        >
           <Icons.menu className="h-5 w-5" />
         </Button>
       </SheetTrigger>

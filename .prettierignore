@@ -1,6 +1,7 @@
 .github
 .next
 .velite
+.vscode
 
 *.yaml
 
