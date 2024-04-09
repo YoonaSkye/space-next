@@ -31,7 +31,7 @@ const themeOptions = [
 
 export default function ThemeMode() {
   const [mounted, setMounted] = useState(false)
-  const { theme, setTheme } = useTheme()
+  const { theme, setTheme, resolvedTheme } = useTheme()
 
   // useEffect only runs on the client, so now we can safely show the UI
   // Avoid Hydration Mismatch
@@ -46,7 +46,12 @@ export default function ThemeMode() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
-        {themeOptions.find((option) => theme === option.value)?.icon}
+        {/* {themeOptions.find((option) => theme === option.value)?.icon} */}
+        {resolvedTheme === 'light' ? (
+          <Icons.sun className="h-[1.5rem] w-[1.5rem]" />
+        ) : (
+          <Icons.moon className="h-[1.5rem] w-[1.5rem]" />
+        )}
       </DropdownMenuTrigger>
       <DropdownMenuContent align="center" className={cn('min-w-[6rem]')}>
         {themeOptions.map((optoin) => (
