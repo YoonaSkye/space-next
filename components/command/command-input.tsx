@@ -8,6 +8,7 @@ import {
   type ChangeEvent,
   type KeyboardEvent
 } from 'react'
+import Prompt from './prompt'
 
 interface CommandInputProps {
   currentClickCmd: string
@@ -63,7 +64,7 @@ export default function CommandInput({
 
   return (
     <div className="command-input">
-      <p>Prompt</p>
+      <Prompt />
       <div className="flex">
         <div className="text-green-500 text-lg">❯</div>
         <input
