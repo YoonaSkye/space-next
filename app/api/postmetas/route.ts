@@ -3,5 +3,6 @@ import { NextResponse } from 'next/server'
 
 export async function GET() {
   const res = getPostsListWithMeta()
+
   return NextResponse.json(res)
 }

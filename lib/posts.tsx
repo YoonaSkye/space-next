@@ -1,4 +1,5 @@
 import { Post, posts } from '#site/content'
+import { formatDate } from './utils'
 
 export function sortPosts(posts: Array<Post>) {
   return posts.sort(
@@ -28,7 +29,7 @@ export function getPostsSlug() {
 export function getPostsListWithMeta() {
   return getPostsList().map((post) => {
     const { title, description, date, slugAsParams } = post
-    return { title, description, date, slugAsParams }
+    return { title, description, date: formatDate(date), slugAsParams }
   })
 }
 

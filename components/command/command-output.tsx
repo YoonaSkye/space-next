@@ -1,5 +1,3 @@
-'use client'
-
 import Content from './content'
 import Prompt from './prompt'
 
