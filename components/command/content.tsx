@@ -1,11 +1,13 @@
 import {
   ABOUT,
   COMMAND_CONTENT_MAP,
+  COMMAND_NOT_FOUND,
   CommandType,
   HELP,
   LIST,
   LS,
-  POSTS
+  POSTS,
+  RMRF
 } from '@/constants'
 import Link from 'next/link'
 import { useContext } from 'react'
@@ -27,9 +29,15 @@ export default function Content(props: Record<string, any>) {
     return MDXContent(cmd)
   } else if (cmd === ABOUT) {
     return AbountContent(args)
+  } else if (cmd.includes(RMRF)) {
+    return <p className="text-red-500">你的想法很危险😏</p>
   }
 
-  return <div>content</div>
+  return (
+    <p className="text-red-500">
+      {COMMAND_NOT_FOUND}: {cmd}
+    </p>
+  )
 }
 
 function HelpContent(props: Record<string, any>) {
