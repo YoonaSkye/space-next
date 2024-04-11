@@ -11,7 +11,7 @@ export default function SiteHeader() {
   const [active] = useNavActive()
 
   return (
-    <header className="flex sm:justify-between items-center mb-20">
+    <header className="flex sm:justify-between items-center mb-20 -mx-28">
       <Link href="/" className="text-xl flex-1 sm:flex-none">
         {SPACE_NAME}
       </Link>

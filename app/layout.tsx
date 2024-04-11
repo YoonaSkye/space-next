@@ -41,7 +41,7 @@ export default function RootLayout({
         <NextThemeProvider>
           <section className="flex flex-col min-h-screen mx-auto max-w-5xl pt-12 pb-8 px-8">
             <SiteHeader />
-            <main>{children}</main>
+            <main className="flex-1">{children}</main>
             <SiteFooter />
           </section>
         </NextThemeProvider>
