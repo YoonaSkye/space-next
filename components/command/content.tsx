@@ -10,7 +10,7 @@ import {
   RMRF
 } from '@/constants'
 import Link from 'next/link'
-import { useContext } from 'react'
+import { useContext, type MouseEvent } from 'react'
 import { Icon } from '../Icons'
 import { CommandContext } from './command-provider'
 
@@ -74,7 +74,11 @@ function HelpContent(props: Record<string, any>) {
 }
 
 function ListContent(props: Record<string, any>) {
-  const { source, content } = props
+  const { source, content, onOutputCmdClick } = props
+  const onCmdClick = (e: MouseEvent<HTMLButtonElement>) => {
+    const { value } = e.currentTarget
+    onOutputCmdClick(value)
+  }
 
   const containerStyle = 'grid grid-cols-5 gap-x-12 gap-y-4 text-green-500'
 
@@ -85,7 +89,12 @@ function ListContent(props: Record<string, any>) {
       }
     >
       {content.map((cmd: string) => (
-        <button key={cmd} className="text-left">
+        <button
+          key={cmd}
+          className="text-left"
+          value={cmd}
+          onClick={onCmdClick}
+        >
           {cmd}
         </button>
       ))}
