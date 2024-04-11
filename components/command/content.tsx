@@ -8,7 +8,9 @@ import {
   POSTS
 } from '@/constants'
 import Link from 'next/link'
+import { useContext } from 'react'
 import { Icon } from '../Icons'
+import { CommandContext } from './command-provider'
 
 export default function Content(props: Record<string, any>) {
   const { cmd } = props
@@ -22,7 +24,7 @@ export default function Content(props: Record<string, any>) {
   } else if (cmd === LIST || cmd === LS) {
     return ListContent(args)
   } else if (cmd === POSTS) {
-    return <div className="">posts</div>
+    return MDXContent(cmd)
   } else if (cmd === ABOUT) {
     return AbountContent(args)
   }
@@ -107,6 +109,28 @@ function AbountContent(props: Record<string, any>) {
             <Icon name={platform[0]} width={22} height={22} />
             <Link href={platform[1]} target="_blank" className="underline ml-2">
               {platform[0]}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </>
+  )
+}
+
+function MDXContent(cmd: string) {
+  const { posts } = useContext(CommandContext)
+
+  return (
+    <>
+      <ul>
+        {posts.map((post) => (
+          <li key={post.slugAsParams} className="mb-2 list-disc list-inside">
+            <Link
+              href={`/blog/${post.slugAsParams}`}
+              className="text-sky-500"
+              target="_blank"
+            >
+              {post.title}
             </Link>
           </li>
         ))}

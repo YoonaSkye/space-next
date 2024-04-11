@@ -2,7 +2,7 @@
 
 import { Post } from '#site/content'
 import { fetchPosts } from '@/lib/posts'
-import { createContext, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 
 type ProviderValueType = {
   posts: Post[]
@@ -26,9 +26,9 @@ export default function CommandProvider({
     setProviderValue({ posts })
   }
 
-  // useEffect(() => {
-  //   fetch()
-  // }, [])
+  useEffect(() => {
+    fetch()
+  }, [])
 
   return (
     <CommandContext.Provider value={{ ...providerValue }}>
