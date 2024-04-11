@@ -1,4 +1,14 @@
-import { COMMAND_CONTENT_MAP, CommandType, HELP, LIST, LS } from '@/constants'
+import {
+  ABOUT,
+  COMMAND_CONTENT_MAP,
+  CommandType,
+  HELP,
+  LIST,
+  LS,
+  POSTS
+} from '@/constants'
+import Link from 'next/link'
+import { Icon } from '../Icons'
 
 export default function Content(props: Record<string, any>) {
   const { cmd } = props
@@ -11,7 +21,12 @@ export default function Content(props: Record<string, any>) {
     return HelpContent(args)
   } else if (cmd === LIST || cmd === LS) {
     return ListContent(args)
+  } else if (cmd === POSTS) {
+    return <div className="">posts</div>
+  } else if (cmd === ABOUT) {
+    return AbountContent(args)
   }
+
   return <div>content</div>
 }
 
@@ -65,5 +80,37 @@ function ListContent(props: Record<string, any>) {
         </button>
       ))}
     </div>
+  )
+}
+
+function AbountContent(props: Record<string, any>) {
+  const {
+    content: { introduction, skills, platforms }
+  } = props
+
+  return (
+    <>
+      <p className="mb-6">{introduction}</p>
+      <div className="flex items-center mb-6">
+        <span className="mr-3">常用技术栈✨:</span>
+        <div className="grid gap-5 grid-cols-12 items-center">
+          {skills.map((skill: string) => (
+            <Icon key={skill} name={skill} />
+          ))}
+        </div>
+      </div>
+
+      <p className="mb-5">也可以在这些地方找到我:</p>
+      <ul className="ml-1">
+        {Object.entries(platforms).map((platform: Record<string, any>) => (
+          <li key={platform[0]} className="flex mb-2">
+            <Icon name={platform[0]} width={22} height={22} />
+            <Link href={platform[1]} target="_blank" className="underline ml-2">
+              {platform[0]}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </>
   )
 }
