@@ -1,4 +1,5 @@
 import NextThemeProvider from '@/components/next-theme-provider'
+import Plum from '@/components/plum'
 import SiteFooter from '@/components/site-footer'
 import SiteHeader from '@/components/site-header'
 import type { Metadata } from 'next'
@@ -44,6 +45,7 @@ export default function RootLayout({
             <main className="flex-1">{children}</main>
             <SiteFooter />
           </section>
+          <Plum />
         </NextThemeProvider>
       </body>
     </html>
